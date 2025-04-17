@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Calculator Style</title>
+    <style>
+        body{
+            font-family: Arial;
+        }
+        .button-style{
+            background-color: green;
+            font: white;
+            font-size: 23px;;
+            border-radius: 20px;
+            border:none;
+        }
+        .input{
+            font-size: 20px;
+            border-radius: 20px;
+            margin-right: 13px;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Amazon Shipping Calculator
+    </h1>
+    <input class = "js-input input" placeholder="Cost of order" onkeydown="enterKey(event)">
+    <button class = "button-style" onclick="calculate()">
+        Calculate
+    </button>
+    <p class = "js-res">
+
+    </p>
+    <script>
+       
+        const inpElem = document.querySelector('.js-input');
+     
+        function calculate(){
+            let inpElemVal = parseFloat(inpElem.value);
+            if(inpElemVal < 40) {
+                inpElemVal+=10;
+            }
+            else{
+                inpElemVal;
+            }
+            const shippingResult = document.querySelector('.js-res').innerHTML = inpElemVal;            
+        }
+
+        function enterKey(enter){
+            if(event.key === 'Enter') calculate();
+        }
+    </script>
+
+</body>
+</html>
