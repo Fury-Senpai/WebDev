@@ -1,0 +1,112 @@
+<!-- localStorage.getItem(); for getting data from local storage
+     localStorage.setItem(); for saving data in local storage so that it can be retrived later on
+     localStorage.removeItem(); for removing item from the local storage    
+     JSON.stringify(); for converting object into string
+     JSON.parse(); for converting string into object -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+</head>
+<body>
+    <button class="rock"
+        onclick="
+        const randomNumber = getRandomNumber(0, 2);
+        console.log(randomNumber);  
+        if(randomNumber===1){
+            score.tie++;
+            alert(`Bot picked Rock \n Tie
+            win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`);
+            localStorage.setItem('score' , JSON.stringify(score));
+        }
+        else if(randomNumber===1){
+            score.wins++;
+            alert(`Bot picked Paper \nYou Won
+            win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`);
+            localStorage.setItem('score' , JSON.stringify(score));
+        }
+        else{
+            score.loose++;
+            alert(`Bot picked Scissor    \nYou Lost
+            win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`);
+            localStorage.setItem('score' , JSON.stringify(score));
+        }"> Rock </button>
+    <button class="paper"
+    onclick="
+    randomNumber = getRandomNumber(0, 2);
+    console.log(randomNumber);  
+    if(randomNumber===1){
+        score.loose++;
+        alert(`Bot picked Rock \n You Lost
+        win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`
+        );
+        localStorage.setItem('score' , JSON.stringify(score));
+    }
+    else if(randomNumber===1){
+        score.tie++;
+        alert(`Bot picked Paper \nTie
+        win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`
+        );
+        localStorage.setItem('score' , JSON.stringify(score));
+    }
+    else{
+        score.wins++;
+        alert(`Bot picked Scissor    \nYou Won
+        win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`
+        );
+        localStorage.setItem('score' , JSON.stringify(score));
+    }"> Paper </button>
+    <button class="scissor" 
+        onclick="
+        randomNumber = getRandomNumber(0, 2);
+        console.log(randomNumber);  
+        if(randomNumber===1){
+            score.loose++;
+            alert(`Bot picked Rock \n You Lost 
+            win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`);
+            localStorage.setItem('score' , JSON.stringify(score));
+            }
+        else if(randomNumber===1){
+            score.tie++;
+            alert(`Bot picked Paper \nTie
+            win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`
+            );
+            localStorage.setItem('score' , JSON.stringify(score));
+        }
+        else{
+            score.wins++;
+            alert(`Bot picked Scissor    \nYou Won
+            win: ${score.wins} loose: ${score.loose} tie: ${score.tie}`
+            );
+            localStorage.setItem('score' , JSON.stringify(score));
+        }"> Scissor </button>
+
+        <button onclick="
+            score.wins = 0;
+            score.loose = 0;
+            score.tie = 0;
+            alert(`Game is Reset 
+            Wins:${score.wins} Loose: ${score.loose} Tie: ${score.tie}`);
+
+            
+        ">Reset</button>
+
+        
+    <!--JS Here-->
+    <script>
+
+        
+        //function to generate random number
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+        const score = JSON.parse(localStorage.getItem('score'));
+
+        
+        
+    </script>
+</body>
+</html>
